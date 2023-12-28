@@ -41,6 +41,7 @@ class Product(BaseMixin):
     size = models.ForeignKey(Size,on_delete=models.CASCADE,null=True,blank=True)
     color = models.ForeignKey(Color,on_delete=models.CASCADE,null=True,blank=True)
     brand = models.ForeignKey(Brand,on_delete=models.CASCADE,null=True,blank=True)
+    rating = models.CharField(null=True,blank=True,max_length=1)
     
     def __str__(self):
         return self.name
