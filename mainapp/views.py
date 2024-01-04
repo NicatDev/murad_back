@@ -21,8 +21,12 @@ from django.contrib.auth import get_user_model, login, authenticate
 class LoginView(APIView):
     # permission_classes = [IsCompanyLead]
     def post(self, request, *args, **kwargs):
+        print('1')
+        print(request.data)
+        print('2')
         username = request.data.get('username')
         password = request.data.get('password')
+        print(username,password)
         user = authenticate(username=username, password=password)
         if not user:
             return Response({"sifre ve ya username yanlisdir"})
@@ -77,7 +81,29 @@ class ProductSingleView(generics.RetrieveUpdateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     
-    
+class CheckAuth(APIView):
+    def get(self, request):
+        print('1')
+        data = {}
+        print(2)
+        user = request.user
+        print('3')
+        if user.is_authenticated:  
+            print('4')
+            data['token'] = True
+            data['name'] = user.first_name + ' ' + user.last_name
+        else:
+            print('5')
+            data['token'] = False
+        return Response(data)
+# class BasketView(APIView):
+#     serializer_class = BasketSerializer
+#     queryset = BasketItem
+
+#     def post(request):
+#         data = request.data
+
+
     
 # #END Homepage 
     

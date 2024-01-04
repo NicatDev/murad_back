@@ -9,5 +9,7 @@ urlpatterns = [
     path("product/<pk>", ProductSingleView.as_view(), name="products"),
     
     path("register", RegistrationView.as_view(), name="register"),
+    path("login", LoginView.as_view(), name="login"),
+    path("check", CheckAuth.as_view(), name="check"),
     path("RegisterView", RegisterView.as_view(), name="RegisterView"),
 ]

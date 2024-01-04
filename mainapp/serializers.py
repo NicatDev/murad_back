@@ -3,6 +3,11 @@ from mainapp.models import *
 
 """{"username":"admin","password":"123123","email":"n@gmail.com","first_name":"admin","last_name":"admin","is_superuser":true,"is_staff":true}"""
 
+class BasketSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BasketItem
+        fields = '__all__'
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
